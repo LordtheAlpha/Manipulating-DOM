@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom Assignment</title>
+    <link rel="stylesheet" href="DOM_assignmentCss.css">
+    <style>
+        /* Style for the card toggle */
+        .card {
+            background-color: yellow;
+            color: red;
+            font-size: 20px;
+            font-weight: bold;
+            border: 2px solid black;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Question 1 -->
+    <p id="demo">Hello</p>
+
+    <!-- Question 2 -->
+    <div class="box"> Question 2 </div>
+
+    <!-- Question 3 -->
+    <ul id="list">
+        <li>First item</li>
+        <li>Second item</li>
+        <li>Third item</li>
+    </ul>
+
+    <!-- Question 5 -->
+    <button id="clickMe"> Click Me </button>
+    <p id="message"> Waiting...</p>
+
+    <br><br>
+
+    <!-- Question 6 -->
+    <div id="card">Hello Toggle Me</div>
+    <button id="btn"> Click to toggle</button>
+
+    <br><br>
+
+    <!-- Question 4 -->
+    <button id="deleteBtn">Delete</button>
+
+    <br><br>
+
+    <!-- Question 7 -->
+    <input id="nameInput" type="text" placeholder="Type your name here">
+    <p id="output">Do well to fill the form</p>
+    <button id="submitButton">Submit</button>
+
+    <br><br>
+
+    <!-- Question 8 -->
+    <img id="dogPic" src="https://th.bing.com/th/id/R.c513b66848d82ad46dd26c272c89bd31?rik=2qCSnFR94pd%2bYA&pid=ImgRaw&r=0" alt="DOG 1">
+    <br><br>
+    <button id="dogchangeButton">Change Image</button>
+
+    <br><br>
+
+    <!-- Question 9 -->
+    <p>Enter how many elements you want added:</p>
+    <input type="number" id="numInput" placeholder="Enter a number">
+    <div id="container"></div>
+
+    <br><br><br><br>
+
+    <!-- Question 10 -->
+    <ul id="menu">
+        <li>Angola</li>
+        <li>Botswana</li>
+        <li>Chile</li>
+        <li>Denmark</li>
+        <li>Eqypt</li>
+    </ul>
+    <button id="changeFandS">Click to change color</button>
+
+    <br><br><br>
+
+    <script>
+        // Grabbing elements
+        let demo = document.getElementById("demo");
+        let box = document.querySelector(".box");
+        let list = document.getElementById("list");
+        let newitem = document.createElement("li");
+        let deleteBtn = document.getElementById("deleteBtn");
+        let clickMe = document.getElementById("clickMe");
+        let message = document.getElementById("message");
+        let card = document.getElementById("card");
+        let btn = document.getElementById("btn");
+        let nameInput = document.getElementById("nameInput");
+        let output = document.getElementById("output");
+        let submitButton = document.getElementById("submitButton");
+        let dogPic = document.getElementById("dogPic");
+        let dogchangeButton = document.getElementById("dogchangeButton");
+        let numInput = document.getElementById("numInput");
+        let container = document.getElementById("container");
+        let menu = document.getElementById("menu");
+        let changeFandS = document.getElementById("changeFandS");
+
+        // Question 1: Change paragraph text
+        demo.textContent = "Hello, DOM!";
+
+        // Question 2: Change background color of box
+        box.style.backgroundColor = "lightblue";
+
+        // Question 3: Add a new list item
+        newitem.textContent = "New item";
+        list.appendChild(newitem);
+
+        // Question 4: Remove delete button
+        deleteBtn.remove();
+
+        // Question 5: Change message text when button is clicked
+        clickMe.addEventListener("click", () => {
+            message.textContent = "Button Clicked!";
+        });
+
+        // Question 6: Toggle card style
+        btn.addEventListener("click", () => {
+            card.classList.toggle("card");
+        });
+
+        // Question 7: Display input value on form submission
+        submitButton.addEventListener("click", () => {
+            output.textContent = `Hello ${nameInput.value}, you are ready to submit the form`;
+        });
+
+        // Question 8: Change dog image on button click
+        dogchangeButton.addEventListener("click", () => {
+            dogPic.src = "https://th.bing.com/th/id/R.8a040b14a7e8372b2f32a5dd47d154fb?rik=YFNxjVqANrO2Lw&riu=http%3a%2f%2fwww.indiacelebrating.com%2fwp-content%2fuploads%2fDog.jpg&ehk=jEjwMK%2fow5DHuKJR%2fJIvCoqot5abXJG0w%2bxDDOK86PM%3d&risl=&pid=ImgRaw&r=0";
+        });
+
+        // Question 9: Add dynamic number of paragraphs
+        numInput.addEventListener("input", () => {
+            container.innerHTML = ""; // clear before appending
+            for (let index = 1; index <= numInput.value; index++) {
+                let tobeAppended = document.createElement("p");
+                tobeAppended.innerHTML = `Paragraph ${index}`;
+                container.appendChild(tobeAppended);
+            }
+        });
+
+        // Question 10: Change first and last menu item colors
+        changeFandS.addEventListener("click", () => {
+            menu.firstElementChild.style.color = "red";
+            menu.lastElementChild.style.color = "blue";
+        });
+    </script>
+</body>
+</html>
